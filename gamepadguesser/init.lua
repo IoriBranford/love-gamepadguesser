@@ -53,11 +53,15 @@ end
 
 
 -- Load gamepad db to get support for more gamepads.
---
+-- Returns whether db was loaded successfully or not.
 -- Call from love.load.
 function gamepadguesser.loadMappings(path_to_gamepadguesser)
     local fpath = path_to_gamepadguesser .. "/assets/db/gamecontrollerdb.txt"
-    love.joystick.loadGamepadMappings(fpath)
+    if love.filesystem.getInfo(fpath) then
+        love.joystick.loadGamepadMappings(fpath)
+        return true
+    end
+    return false
 end
 
 
@@ -130,7 +134,11 @@ function JoystickData:ctor(path_to_gamepadguesser)
                     end
                     local fmt = "%s/assets/images/%s/%s.png"
                     local fpath = fmt:format(path_to_gamepadguesser, console, name)
-                    local im = love.graphics.newImage(fpath)
+
+                    local im = love.filesystem.getInfo(fpath)
+                        and love.graphics.newImage(fpath)
+                        or false
+
                     t[name] = im
                     if prefix then
                         -- We use the same image for left, leftx, lefty since
