@@ -31,7 +31,7 @@ local all_patterns = {
         "dualshock", "%f[%w]ps[123]%f[%D]", "sony%f[%W]", "playstation",
     },
     nintendo = {
-        "wii%f[%L]", "%f[%u]s?nes%f[%U]", "%f[%l]s?nes%f[%L]", "%f[%u]switch%f[%L]", "joy[- ]cons?%f[%L]",
+        "nintendo", "wii%f[%L]", "%f[%a]s?nes%f[%A]", "%f[%l]s?nes%f[%L]", "%f[%a]switch%f[%A]", "joy[- ]cons?%f[%L]",
     },
     -- Our art doesn't have sega and I don't have a sega gamepad to test with,
     -- so don't include it.
