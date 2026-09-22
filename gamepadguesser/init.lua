@@ -17,6 +17,7 @@ gamepadguesser.CONSOLES = {
 }
 
 local all_patterns = {
+    "playstation", "nintendo",
     playstation = {
         "%f[%w]PS%d%f[%D]", "Sony%f[%W]", "Play[Ss]tation",
     },
@@ -66,10 +67,12 @@ end
 
 
 -- Map a joystick name (e.g., from gamecontrollerdb) to a console.
+---@param name string
+---@return string
 function gamepadguesser.joystickNameToConsole(name)
-    for console,patterns in pairs(all_patterns) do
-        for _,pat in ipairs(patterns) do
-            if name:match(pat) then
+    for _, console in ipairs(all_patterns) do
+        for _,pat in pairs(all_patterns[console]) do
+            if name:find(pat) then
                 return console
             end
         end
