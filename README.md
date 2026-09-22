@@ -62,8 +62,7 @@ overrideConsole.
 You can also use gamepadguesser with your own art. The easiest way is to modify
 the art in gamepadguesser/assets/images/ to ensure the correct file names.
 
-You can also get the name of the console associated with the joystick ("xbox",
-"playstation", "nintendo"):
+You can also get the name of the console associated with the joystick ("xbox", "psclassic", "ps4", "ps5", "nintendo"):
 
 ```lua
 function love.gamepadpressed(joystick, button)

@@ -12,14 +12,23 @@ local gamepadguesser = {}
 
 gamepadguesser.CONSOLES = {
     "nintendo",
-    "playstation",
+    "psclassic",
+    "ps4",
+    "ps5",
     "xbox",
 }
 
 local all_patterns = {
-    "playstation", "nintendo",
-    playstation = {
-        "%f[%w]ps%d%f[%D]", "sony%f[%W]", "playstation",
+    "ps5", "ps4", "psclassic", "nintendo",
+
+    ps5 = {
+        "dualsense", "%f[%w]ps5%f[%D]", "playstation%s*5"
+    },
+    ps4 = {
+        "dualshock%s*4", "%f[%w]ps4%f[%D]", "playstation%s*4"
+    },
+    psclassic = {
+        "dualshock", "%f[%w]ps[123]%f[%D]", "sony%f[%W]", "playstation",
     },
     nintendo = {
         "wii%f[%L]", "%f[%u]s?nes%f[%U]", "%f[%l]s?nes%f[%L]", "%f[%u]switch%f[%L]", "joy[- ]cons?%f[%L]",
