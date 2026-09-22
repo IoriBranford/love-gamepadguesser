@@ -19,10 +19,10 @@ gamepadguesser.CONSOLES = {
 local all_patterns = {
     "playstation", "nintendo",
     playstation = {
-        "%f[%w]PS%d%f[%D]", "Sony%f[%W]", "Play[Ss]tation",
+        "%f[%w]ps%d%f[%D]", "sony%f[%W]", "playstation",
     },
     nintendo = {
-        "Wii%f[%L]", "%f[%u]S?NES%f[%U]", "%f[%l]s?nes%f[%L]", "%f[%u]Switch%f[%L]", "Joy[- ]Cons?%f[%L]",
+        "wii%f[%L]", "%f[%u]s?nes%f[%U]", "%f[%l]s?nes%f[%L]", "%f[%u]switch%f[%L]", "joy[- ]cons?%f[%L]",
     },
     -- Our art doesn't have sega and I don't have a sega gamepad to test with,
     -- so don't include it.
@@ -70,6 +70,7 @@ end
 ---@param name string
 ---@return string
 function gamepadguesser.joystickNameToConsole(name)
+    name = name:lower()
     for _, console in ipairs(all_patterns) do
         for _,pat in pairs(all_patterns[console]) do
             if name:find(pat) then
